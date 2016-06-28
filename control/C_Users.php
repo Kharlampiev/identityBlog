@@ -89,28 +89,29 @@ class C_Users extends C_Base
 		if($this->IsPost())
 		{
 			$user=$mUsers->getByLogin($_POST['login']);
-				
-			if ($_POST['password']!==$_POST['password_confirm'])
-			{
-					$errors[]="Passwords do not match";
-			}
-			else if($user==true)
-				{
-				 	$errors[]="This user already exists";
-				}
-
-			 else {
-			 	$data=$mUsers->register($_POST['login'],
+			$data=$mUsers->register($_POST['login'],
 									$_POST['password'],
 									$_POST['password_confirm'],
 									$_POST['email']);
-			if($data==true)
-			{
+				if($data==true)
+				{
 
-				header('location:index.php?c=users&action=login');
-				exit();
-			}
-		}
+					header('location:index.php?c=users&action=login');
+					exit();
+				} 
+				else
+				{
+					$errors[]="Registration faulted";
+					
+					if ($_POST['password']!==$_POST['password_confirm'])
+						{
+							$errors[]="Passwords do not match";
+						}
+					else if($user==true)
+						{
+				 			$errors[]="This user already exists";
+						}
+				}
 
 			$this->login=$_POST['login'];
 			$this->password=$_POST['password'];
