@@ -28,11 +28,11 @@ class M_Articles{
         return $rows[0];
     }
     
-    public function addArticles($title, $date, $content)
+    public function addArticles($title, $date, $content,$whoAdd)
     {
 
         $db=M_Mysql::getInstance();
-        $db->Insert("articles",['title'=>$title,'date'=>$date,'content'=>$content]);
+        $db->Insert("articles",['title'=>$title,'date'=>$date,'content'=>$content,'whoAdd'=>$whoAdd]);
         return $db;
     }
   

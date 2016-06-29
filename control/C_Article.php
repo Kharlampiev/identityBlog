@@ -108,21 +108,24 @@ class C_Article extends C_Base
  	
  		$this->action_title .="Create Article";
 		
+		
 		if(!empty($this->IsPost()))
 		{
-		
-			if (M_Articles::addArticles($_POST['title'],
+			
+		if (M_Articles::addArticles($_POST['title'],
 										$_POST['date'],
-										$_POST['content']))
+										$_POST['content'],
+										$_POST['whoAdd']))
 			{
 					
 				header('Location: index.php');
 				exit();
 			}  
-	
+		
 			$this->title=$_POST['title'];
 			$this->date=$_POST['date'];
 			$this->content=$_POST['content'];
+			$this->whoAdd=$_POST['whoAdd'];
 		}
 
  	 	$this->site_content=$this->Template('view/add.php',
@@ -130,6 +133,7 @@ class C_Article extends C_Base
  	 			'title'=>$this->title,
  	 			'date'=>$this->date,
  	 			'content'=>$this->content,
+ 	 			'whoAdd'=>$this->whoAdd
  	 			));
 	}
 

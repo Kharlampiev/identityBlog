@@ -46,9 +46,9 @@ if(!$mUsers->can('Add'))
 								<textarea class="form-control" name="content" required ></textarea> 
 							</div>
 						</div>
-
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
+							<input type="hidden" class="form-control" name="whoAdd" value="<?=$_SESSION['login']?>"  required>
 								<button type="submit" class="btn btn-primary">
 									Create
 								</button>

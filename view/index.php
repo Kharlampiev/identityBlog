@@ -5,7 +5,11 @@
 			<h3>
 				<a href="index.php?c=article&action=get&id=<?=$article['id']?>"><?=$article['title']?></a>
 			</h3>
-			<p class="text-muted">published:<?=$article['date']?></p>
+			<p class="text-muted">created:
+				<?php $date=new DateTime($article['date']);
+					print $date->format('d/m/Y') ?> by
+				<?=$article['whoAdd']?>	
+			</p>
 			<!--<p class="content"><?=M_Articles::previewArticles($article['content'],$len)?>
 				<a href="index.php?c=article&action=get&id=<?=$article['id']?>">
 				...читать далее
