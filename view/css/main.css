@@ -52,9 +52,9 @@ body{
 .grid:last-child{
 	border-bottom:none;
 }
-.col-md-2 p{
+.col-md-1 p{
 	margin: 0;
 }
-.col-md-2{
+.col-md-1{
 	margin-top: 4%;
 }

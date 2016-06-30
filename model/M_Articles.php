@@ -58,6 +58,39 @@ class M_Articles{
         return mb_substr($article_text, 0, $len);
     
     }
+    public function viewsArticle($id)
+    {
+
+        $ip_visitor=$_SERVER['REMOTE_ADDR'];
+        $db=M_Mysql::getInstance();
+        $rows=$db->Select("SELECT id_ip FROM visits WHERE  ip_address='$ip_visitor' AND id_article='$id'");
+         
+         if(count($rows)==0)
+         {
+            $db->Insert('visits',['ip_address'=>$ip_visitor,'id_article'=>$id]);
+         }
+        /* else
+         {
+            $views=$db->Select("SELECT views FROM visits WHERE ip_address='$ip_visitor' AND id_article='$id'");
+            
+            $view=$views[0]['views'];
+           
+           // var_dump($view);
+                $db->Update('visits',['views'=>++$view],"id_article='$id'");
+            
+            
+         
+         }*/
+         $result=$db->Select("SELECT id_ip FROM visits WHERE id_article='$id'");
+
+        return $result;
+    }
+    public function showViewsArticle($id)
+    {
+         $db=M_Mysql::getInstance();
+         $views=$db->Select("SELECT id_ip FROM visits WHERE id_article='$id'");
+         return $views;
+    }
 }
 
 ?>

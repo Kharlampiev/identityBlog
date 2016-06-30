@@ -18,8 +18,9 @@
 				<h3><?=$title?></h3>
 					<p class="text-muted">published:
 						<?php $date=new DateTime($article['date']);
-						print $date->format('d/m/Y') ?>
+						print ($date->format('d/m/Y')) ?> by <?=$whoAdd?>
 					</p>
+					<p><?=count($view)?></p>
 			</div>
 			<div class="panel-body">
 				<div class="col-xs-10 col-md-10  col-md-offset-1">
@@ -36,6 +37,7 @@
 		<?=$form_comments;?>
 	</div>
 </div>
+<?=var_dump($view)?>
 	
 	
 			
