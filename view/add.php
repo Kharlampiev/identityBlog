@@ -37,7 +37,7 @@ if(!$mUsers->can('Add'))
 						<div class="form-group">
 							<label class="col-md-4 control-label">Date</label>
 							<div class="col-md-6">
-								<input type="date" class="form-control" name="date"  required>
+								<input type="date" class="form-control" name="created_at"  required>
 							</div>
 						</div>
 						<div class="form-group">
@@ -46,9 +46,9 @@ if(!$mUsers->can('Add'))
 								<textarea class="form-control" name="content" required ></textarea> 
 							</div>
 						</div>
-
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
+							<input type="hidden" class="form-control" name="whoAdd" value="<?=$_SESSION['login']?>"  required>
 								<button type="submit" class="btn btn-primary">
 									Create
 								</button>

@@ -47,17 +47,31 @@ $mUsers=M_Users::getInstance();
 				</div>
 			</div>
 		</nav>
-		<?php if (isset($_SESSION['login'])):?>
+		
 		<div class="container">
 			<div class="row">
 		 		<div class="col-md-10 col-md-offset-1">
-		 			<div class="col-md-2 col-md-offset-10">
+		 		<div class="col-md-4">
+					<div class="btn-group">
+  						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Sort by <span class="caret"></span></button>
+  						<ul class="dropdown-menu">
+  							<li><a href="index.php">Show All</a></li>
+  							<li role="separator" class="divider"></li>
+    						<li><a href="index.php?c=article&action=sort&date=lastmonth">Last month</a></li>
+   							<li><a href="index.php?c=article&action=sort&date=lastweek">Last week</a></li>
+    						<li><a href="index.php?c=article&action=sort&date=lastday">Last day</a></li>
+    					</ul>
+					</div>
+		 		</div>
+		 		<?php if (isset($_SESSION['login'])):?>
+		 			<div class="col-md-2 col-md-offset-5">
 						<a  class="btn" href="index.php?c=article&action=add">Create post</a>
 					</div>
+				<?php endif; ?>
 		 		</div>
 			</div>
 		</div>
-		<?php endif; ?>
+		
 		<div class="container">
 			<div class="row">
 				<div class="col-md-10 col-md-offset-1">
@@ -70,9 +84,6 @@ $mUsers=M_Users::getInstance();
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="footer">
-	<div class="container"></div>
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="view/js/bootstrap.min.js"></script>

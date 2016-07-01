@@ -28,19 +28,19 @@ class M_Articles{
         return $rows[0];
     }
     
-    public function addArticles($title, $date, $content)
+    public function addArticles($title, $created_at, $content,$whoAdd)
     {
 
         $db=M_Mysql::getInstance();
-        $db->Insert("articles",['title'=>$title,'date'=>$date,'content'=>$content]);
+        $db->Insert("articles",['title'=>$title,'created_at'=>$created_at,'content'=>$content,'whoAdd'=>$whoAdd]);
         return $db;
     }
   
-    public function editArticles($id, $title, $date, $content)
+    public function editArticles($id, $title, $created_at, $content)
     {
 
         $db=M_Mysql::getInstance();
-        $db->Update('articles',['title'=>$title,'date'=>$date,'content'=>$content],"id=$id");
+        $db->Update('articles',['title'=>$title,'created_at'=>$created_at,'content'=>$content],"id=$id");
         return $db;
     
     }
@@ -57,6 +57,47 @@ class M_Articles{
     
         return mb_substr($article_text, 0, $len);
     
+    }
+    public function viewsArticle($id)
+    {
+
+        $ip_visitor=$_SERVER['REMOTE_ADDR'];
+        $db=M_Mysql::getInstance();
+        $rows=$db->Select("SELECT id_ip FROM visits WHERE  ip_address='$ip_visitor' AND id_article='$id'");
+         
+         if(count($rows)==0)
+         {
+            $db->Insert('visits',['ip_address'=>$ip_visitor,'id_article'=>$id]);
+         }
+        /* else
+         {
+            $views=$db->Select("SELECT views FROM visits WHERE ip_address='$ip_visitor' AND id_article='$id'");
+            
+            $view=$views[0]['views'];
+           
+           // var_dump($view);
+                $db->Update('visits',['views'=>++$view],"id_article='$id'");
+            
+            
+         
+         }*/
+         $result=$db->Select("SELECT id_ip FROM visits WHERE id_article='$id'");
+
+        return $result;
+    }
+    public function showViewsArticle($id)
+    {
+         $db=M_Mysql::getInstance();
+         $views=$db->Select("SELECT id_ip FROM visits WHERE id_article='$id'");
+         return $views;
+    }
+    public function sortArticles($sortdate)
+    {
+        $db=M_Mysql::getInstance();
+        $query="SELECT * FROM articles WHERE created_at>='$sortdate' ORDER BY id DESC";
+        $rows=$db->Select($query);
+        return $rows;
+
     }
 }
 

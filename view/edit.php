@@ -33,7 +33,7 @@ if(!$mUsers->can('Edit'))
 					<div class="form-group">
 						<label class="col-md-3 control-label">Date</label>
 						<div class="col-md-7">
-								<input type="date" class="form-control" name="date"  value="<?=$date?>">
+								<input type="date" class="form-control" name="created_at"  value="<?=$created_at?>">
 						</div>
 					</div>
 					<div class="form-group">
