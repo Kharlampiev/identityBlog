@@ -50,10 +50,10 @@ class M_Users
 
 	 	if ($id_user == null) $id_user = $this->getUid();
 
-	 	//if ($id_user == null) return null;
+	 	if ($id_user == null) return null;
 
-
-	  	$query = "SELECT * FROM users WHERE id_user = '%d'";
+	 	$db=M_Mysql::getInstance();
+	  	$query = "SELECT * FROM users WHERE id_user ='%d'";
 		$id_user=$this->msql->mres($id_user);
 		$result = sprintf($query, $id_user);
 		$rows = $this->msql->Select($result);
@@ -203,10 +203,12 @@ class M_Users
 
 	}
 
-	public function isOnline($id){
-		
-		$query="SELECT * FROM sessions WHERE id_user=$id";
-		$rows=$this->mysql->Select($query);
+	public function isOnline($id_user){
+		$db=M_Mysql::getInstance();
+		$query="SELECT * FROM sessions WHERE id_user='%d'";
+		$id_user=$db->mres($id_user);
+		$string=sprintf($query,$id_user);
+		$rows=$this->mysql->Select($string);
 		return(count($rows)>0);
 	}
 	// Функция выхода пользователя 
@@ -230,9 +232,13 @@ class M_Users
         if ($id_user == null)
             return false;
         // Возвращаем кол-во выбранных записей по id_user.
-        $query = "SELECT * FROM privs2roles LEFT JOIN users ON privs2roles.id_role = users.id_role LEFT JOIN privs ON privs2roles.id_priv = privs.id_priv WHERE users.id_user = $id_user AND privs.name = '$priv'";
-        $result = $this->msql->Select($query);
-        return (count($result) > 0);
+        $query = "SELECT * FROM privs2roles LEFT JOIN users ON privs2roles.id_role = users.id_role LEFT JOIN privs ON privs2roles.id_priv = privs.id_priv WHERE users.id_user = '%d' AND privs.name = '%s'";
+        $db=M_Mysql::getInstance();
+        $id_user=$db->mres($id_user);
+        $priv=$db->mres($priv);
+        $string=sprintf($query,$id_user,$priv);
+        $rows = $this->msql->Select($string);
+        return (count($rows) > 0);
 	}
 }
 ?>

@@ -19,9 +19,7 @@ abstract class C_Base extends C_Controller
 
 	public function render()
 	{
-		$page=$this->Template('view/main.php',
-			array('action_title'=>$this->action_title,
-				'site_content'=>$this->site_content));
+		$page=$this->Template('view/main.php',['action_title'=>$this->action_title,'site_content'=>$this->site_content]);
 		
 		echo $page;
 	}
@@ -30,7 +28,7 @@ abstract class C_Base extends C_Controller
 	{
 		$content="<strong> Ошибка 404! <strong></br> Ой!Что-то пошло не так. При обработке вашего запроса произошла ошибка!";
 		
-		$this->site_content=$this->Template('view/error.php',array('content'=>$content));
+		$this->site_content=$this->Template('view/error.php',['content'=>$content]);
     }
 }
 ?>

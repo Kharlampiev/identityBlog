@@ -18,7 +18,7 @@
 		</div>
 		<div class=" col-md-1 col-md-offset-1">
 		<p class="text-muted text-center"><small>
-			<?=$comments=count(M_Comment::all_Comments($article['id']))?></small></p> 
+			<?=$comments=count(M_Comment::allComments($article['id']))?></small></p> 
 		<p class="text-muted text-center"><small>Comments</small> </p>
 		</div>
 		<div class=" col-md-1 col-md-offset-1">

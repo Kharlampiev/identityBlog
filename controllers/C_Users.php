@@ -15,16 +15,14 @@ class C_Users extends C_Base
 
 	public function actionProfile()
 	{
-		$this->action_title .="Профиль пользователя";
+		$this->action_title .="User profile";
 		
 		if($this->IsGet())
 		{
-				$this->id=$_GET['id'];
-				$mUsers=M_Users::getInstance();
-				$user=$mUsers->get($this->id);
-				$this->site_content=$this->Template("view/user.php",
-					array('user'=>$user,
-						'title'=>$this->title));
+				
+			$mUsers=M_Users::getInstance();
+			$user=$mUsers->get($_GET['id']);
+			$this->site_content=$this->Template("view/users/user.php",['user'=>$user,'title'=>$this->action_title]);
 		}
 	}
 	
@@ -46,9 +44,7 @@ class C_Users extends C_Base
 		if($this->IsPost())
 		{
 	
-			$data=$mUsers->login($_POST['login'],
-				$_POST['password'],
-				$_POST['remember']);
+			$data=$mUsers->login($_POST['login'],$_POST['password'],$_POST['remember']);
 			
 			if($data==true)
 			{
@@ -66,12 +62,8 @@ class C_Users extends C_Base
 			$this->remember=$_POST['remember'];
 		}
 		
-		$this->site_content=$this->Template("view/login.php",
-			array('login'=>$this->login,
-				'password'=>$this->password,
-				'remember'=>$this->remember, 
-				'action_title'=>$this->title,
-				'errors'=>$errors));
+		$this->site_content=$this->Template("view/auth/login.php",['login'=>$this->login,'password'=>$this->password,
+			'remember'=>$this->remember, 'action_title'=>$this->title,'errors'=>$errors]);
 	}
 	
 	public function actionLogout()
@@ -89,10 +81,7 @@ class C_Users extends C_Base
 		if($this->IsPost())
 		{
 			$user=$mUsers->getByLogin($_POST['login']);
-			$data=$mUsers->register($_POST['login'],
-									$_POST['password'],
-									$_POST['password_confirm'],
-									$_POST['email']);
+			$data=$mUsers->register($_POST['login'],$_POST['password'],$_POST['password_confirm'],$_POST['email']);
 				if($data==true)
 				{
 
@@ -119,14 +108,9 @@ class C_Users extends C_Base
 			$this->email=$_POST['email'];
 		}
 		
-		$this->site_content=$this->Template("view/register.php",
-			array('login'=>$this->login,
-				'password'=>$this->password,
-				'password_confirm'=>$this->password_confirm,
-				'email'=>$this->email,
-				'errors'=>$errors,
-				'action_title'=>$this->action_title
-				));
+		$this->site_content=$this->Template("view/auth/register.php",
+			['login'=>$this->login,'password'=>$this->password,'password_confirm'=>$this->password_confirm,
+			'email'=>$this->email,'errors'=>$errors,'action_title'=>$this->action_title]);
 	}
 }
 ?>

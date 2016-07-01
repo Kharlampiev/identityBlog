@@ -50,7 +50,7 @@ class M_Articles{
     public function deleteArticles($id)
     {
         $db=M_Mysql::getInstance();
-        $db->Delete("articles","id=$id");
+        $db->Delete("articles","id='$id'");
         return $db;
     }
     

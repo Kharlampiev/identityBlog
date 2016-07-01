@@ -12,7 +12,7 @@ class C_Article extends C_Base
 		$this->action_title .="Home";
 		$mArticles=M_Articles::getInstance();
 		$articles=$mArticles->allArticles();
-		$this->site_content=$this->Template('view/index.php',['articles'=>$articles,'len'=>255]);
+		$this->site_content=$this->Template('view/articles/index.php',['articles'=>$articles,'len'=>255]);
 	}
 
 	public function actionGet()
@@ -27,15 +27,15 @@ class C_Article extends C_Base
 			$viewsArticle=M_Articles::verifyViewsArticle($this->id);
 				if(isset($article['id']))
 				{
-					$comments=M_Comment::all_Comments($this->id);
-					$this->comments=$this->Template('view/comment.php',['comments'=>$comments]);
+					$comments=M_Comment::allComments($this->id);
+					$this->comments=$this->Template('view/articles/comment.php',['comments'=>$comments]);
 				}
 		}
 		if ($this->IsPost()) 
 		{
 				
 			$this->id=$_GET['id'];
-				if (M_Comment::add_Comments($this->id,$_POST['name'],$_POST['text'])) 
+				if (M_Comment::addComments($this->id,$_POST['name'],$_POST['text'])) 
 				{
 					header("Location:index.php?c=article&action=get&id=$this->id");
 					exit();
@@ -49,9 +49,9 @@ class C_Article extends C_Base
 
 		}
 			
-		$this->form_comments=$this->Template('view/form_comments.php', ['name'=>$this->name,'text'=>$this->text]);
+		$this->form_comments=$this->Template('view/articles/form_comments.php', ['name'=>$this->name,'text'=>$this->text]);
 			
-		$this->site_content=$this->Template('view/article.php', ['id'=>$article['id'],'title'=>$article['title'],'created_at'=>$article['created_at'],
+		$this->site_content=$this->Template('view/articles/article.php', ['id'=>$article['id'],'title'=>$article['title'],'created_at'=>$article['created_at'],
 			'content'=>$article['content'],'whoAdd'=>$article['whoAdd'],'comments'=>$this->comments,'form_comments'=>$this->form_comments,
 			'action_title'=>$this->action_title]);	
 	}
@@ -82,7 +82,7 @@ class C_Article extends C_Base
 
 			}
 		}
-		$this->site_content=$this->Template('view/delete.php',['id'=> $article['id'],'title'=>$article['title'],'action_title'=>$this->action_title]);
+		$this->site_content=$this->Template('view/editor/delete.php',['id'=> $article['id'],'title'=>$article['title'],'action_title'=>$this->action_title]);
 	}
 
 	public function actionAdd()
@@ -104,7 +104,7 @@ class C_Article extends C_Base
 			$this->whoAdd=$_POST['whoAdd'];
 		}
 
- 	 	$this->site_content=$this->Template('view/add.php',['action_title'=>$this->action_title]);
+ 	 	$this->site_content=$this->Template('view/editor/add.php',['action_title'=>$this->action_title]);
 	}
 
 
@@ -130,7 +130,7 @@ class C_Article extends C_Base
 
 		}
 
-		$this->site_content=$this->Template('view/edit.php', ['id'=>$article['id'],'title'=>$article['title'],'created_at'=>$article['created_at'],
+		$this->site_content=$this->Template('view/editor/edit.php', ['id'=>$article['id'],'title'=>$article['title'],'created_at'=>$article['created_at'],
 			'content'=>$article['content'],'action_title'=>$this->action_title]);	
  	}
  	public function actionSort()
@@ -157,7 +157,7 @@ class C_Article extends C_Base
  			$mArticles=M_Articles::getInstance();
  			$articles=$mArticles->sortArticles($sortdate);
  		}
- 		$this->site_content=$this->Template('view/index.php',['articles'=>$articles,'len'=>255]);
+ 		$this->site_content=$this->Template('view/articles/index.php',['articles'=>$articles,'len'=>255]);
  	}
 }
 ?>
