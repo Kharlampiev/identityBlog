@@ -24,7 +24,7 @@ class C_Article extends C_Base
 			
 			$this->id=$_GET['id'];
 			$article=M_Articles::getArticles($this->id);
-			$viewsArticle=M_Articles::viewsArticle($this->id);
+			$viewsArticle=M_Articles::verifyViewsArticle($this->id);
 				if(isset($article['id']))
 				{
 					$comments=M_Comment::all_Comments($this->id);
@@ -53,7 +53,7 @@ class C_Article extends C_Base
 			
 		$this->site_content=$this->Template('view/article.php', ['id'=>$article['id'],'title'=>$article['title'],'created_at'=>$article['created_at'],
 			'content'=>$article['content'],'whoAdd'=>$article['whoAdd'],'comments'=>$this->comments,'form_comments'=>$this->form_comments,
-			'action_title'=>$this->action_title,'view'=>$viewsArticle]);	
+			'action_title'=>$this->action_title]);	
 	}
 
 	public function actionDelete()
