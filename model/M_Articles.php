@@ -22,9 +22,11 @@ class M_Articles{
     
     public function getArticles($id)
     {
-
         $db=M_Mysql::getInstance();
-        $rows=$db->Select("SELECT * FROM articles WHERE id=$id");
+        $query="SELECT * FROM articles WHERE id='%d'";
+        $id=$db->mres($id);
+        $string=sprintf($query,$id);
+        $rows=$db->Select($string);
         return $rows[0];
     }
     
@@ -58,37 +60,34 @@ class M_Articles{
         return mb_substr($article_text, 0, $len);
     
     }
-    public function viewsArticle($id)
+    public function verifyViewsArticle($id)
     {
 
         $ip_visitor=$_SERVER['REMOTE_ADDR'];
         $db=M_Mysql::getInstance();
-        $rows=$db->Select("SELECT id_ip FROM visits WHERE  ip_address='$ip_visitor' AND id_article='$id'");
-         
-         if(count($rows)==0)
+        $id=$db->mres($id);
+        $verify_query="SELECT id_ip FROM visits WHERE  ip_address='$ip_visitor' AND id_article='%d'";
+        $verify_string=sprintf($verify_query,$id);
+        $rows=$db->Select($verify_string);
+        
+        if(count($rows)==0)
          {
             $db->Insert('visits',['ip_address'=>$ip_visitor,'id_article'=>$id]);
+            return true;
          }
-        /* else
+         else
          {
-            $views=$db->Select("SELECT views FROM visits WHERE ip_address='$ip_visitor' AND id_article='$id'");
-            
-            $view=$views[0]['views'];
-           
-           // var_dump($view);
-                $db->Update('visits',['views'=>++$view],"id_article='$id'");
-            
-            
-         
-         }*/
-         $result=$db->Select("SELECT id_ip FROM visits WHERE id_article='$id'");
+            return false;
+         }
 
-        return $result;
     }
     public function showViewsArticle($id)
     {
          $db=M_Mysql::getInstance();
-         $views=$db->Select("SELECT id_ip FROM visits WHERE id_article='$id'");
+         $query="SELECT id_ip FROM visits WHERE id_article='%d'";
+         $id=$db->mres($id);
+         $string=sprintf( $query,$id);
+         $views=$db->Select($string);
          return $views;
     }
     public function sortArticles($sortdate)
