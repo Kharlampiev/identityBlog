@@ -28,19 +28,19 @@ class M_Articles{
         return $rows[0];
     }
     
-    public function addArticles($title, $date, $content,$whoAdd)
+    public function addArticles($title, $created_at, $content,$whoAdd)
     {
 
         $db=M_Mysql::getInstance();
-        $db->Insert("articles",['title'=>$title,'date'=>$date,'content'=>$content,'whoAdd'=>$whoAdd]);
+        $db->Insert("articles",['title'=>$title,'created_at'=>$created_at,'content'=>$content,'whoAdd'=>$whoAdd]);
         return $db;
     }
   
-    public function editArticles($id, $title, $date, $content)
+    public function editArticles($id, $title, $created_at, $content)
     {
 
         $db=M_Mysql::getInstance();
-        $db->Update('articles',['title'=>$title,'date'=>$date,'content'=>$content],"id=$id");
+        $db->Update('articles',['title'=>$title,'created_at'=>$created_at,'content'=>$content],"id=$id");
         return $db;
     
     }
@@ -90,6 +90,14 @@ class M_Articles{
          $db=M_Mysql::getInstance();
          $views=$db->Select("SELECT id_ip FROM visits WHERE id_article='$id'");
          return $views;
+    }
+    public function sortArticles($sortdate)
+    {
+        $db=M_Mysql::getInstance();
+        $query="SELECT * FROM articles WHERE created_at>='$sortdate' ORDER BY id DESC";
+        $rows=$db->Select($query);
+        return $rows;
+
     }
 }
 

@@ -6,7 +6,7 @@
 				<a href="index.php?c=article&action=get&id=<?=$article['id']?>"><?=$article['title']?></a>
 			</h3>
 			<p class="text-muted">created:
-				<?php $date=new DateTime($article['date']);
+				<?php $date=new DateTime($article['created_at']);
 					print $date->format('d/m/Y') ?> by
 				<?=$article['whoAdd']?>	
 			</p>

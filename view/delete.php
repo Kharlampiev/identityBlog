@@ -18,8 +18,8 @@ if(!$mUsers->can('Delete'))
 			<form class="form-horizontal" role="form" method="POST">
 				<div class="form-group">
 					<div class="col-md-6 col-md-offset-5">
-						<button type="submit" class="btn btn-primary">YES</button>
-						<button type="submit" class="btn btn-primary">NO</button>
+						<button type="submit" name="yes" class="btn btn-primary">YES</button>
+						<button type="submit" name="no" class="btn btn-primary">NO</button>
 					</div>
 				</div>
 			</form>

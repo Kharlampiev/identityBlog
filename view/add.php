@@ -37,7 +37,7 @@ if(!$mUsers->can('Add'))
 						<div class="form-group">
 							<label class="col-md-4 control-label">Date</label>
 							<div class="col-md-6">
-								<input type="date" class="form-control" name="date"  required>
+								<input type="date" class="form-control" name="created_at"  required>
 							</div>
 						</div>
 						<div class="form-group">
