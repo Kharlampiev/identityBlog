@@ -3,11 +3,11 @@
 function classesAutoload($name) 
 {
     //Подгружаем классы
-    $file = 'control/'.$name.'.php';
+    $file = 'controllers/'.$name.'.php';
    
     if(!is_file($file)) 
     {
-        $file = 'model/'.$name.'.php';
+        $file = 'models/'.$name.'.php';
        
         if (!is_file($file)) return;
     }
