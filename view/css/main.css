@@ -56,5 +56,68 @@ body{
 	margin: 0;
 }
 .col-md-1{
-	margin-top: 4%;
+	margin-top: 3%;
+}
+.panel-default>.panel-heading 
+{
+	background: #031316;
+	border-color:#181303;
+	color: #fff;
+}
+.panel-heading {
+    
+    padding: 8px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 0px; 
+    border-top-right-radius: 0px; 
+}
+.comment-creator{
+	border-right: 1px solid #181303;
+}
+.comment-creator span{
+	font-size: 12px;
+}
+.comment-text{
+	padding: 8px 0;
+	font-size: 14px;
+}
+.comment-form input,.comment-form textarea{
+		width: 100%;
+}
+.comment-form input{
+	border-radius: 4px;
+	border:1px solid #ccc;
+	padding: 4px;
+}
+.comment-form >label{
+	color:#ccc;
+	font-size: 13px;
+}
+.list-group-item{
+	border:none;
+}
+.info-create{
+	font-size: 13px;
+}
+.create-form{
+	margin: 20px 0;
+}
+.create-form button{
+		width: 33%
+}
+.navbar-default .navbar-brand {
+	background: #031316;
+	color: #fff;
+}
+.navbar-default .navbar-nav>li>a:hover{
+	background: #031316;
+	color: #fff;
+	border-left:2px solid #f8f8f8;
+}
+
+.register{
+	margin-top: 20px;
+}
+.register button{
+		width: 40%;
 }

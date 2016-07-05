@@ -63,7 +63,7 @@ class C_Users extends C_Base
 		}
 		
 		$this->site_content=$this->Template("view/auth/login.php",['login'=>$this->login,'password'=>$this->password,
-			'remember'=>$this->remember, 'action_title'=>$this->title,'errors'=>$errors]);
+			'remember'=>$this->remember, 'action_title'=>$this->action_title,'errors'=>$errors]);
 	}
 	
 	public function actionLogout()

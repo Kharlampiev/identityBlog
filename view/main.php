@@ -25,10 +25,9 @@ $mUsers=M_Users::getInstance();
     					<a href="index.php" class="navbar-brand">IDENTITY</a>
 				</div>
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
+					<ul class="nav navbar-nav ">
 						<li><a href="index.php">Home</a></li>
 					</ul>
-
 					<ul class="nav navbar-nav navbar-right">
 						<?php if (isset($_SESSION['login'])):?>
 						<?php $uid=$mUsers->getUid();?>
@@ -51,7 +50,7 @@ $mUsers=M_Users::getInstance();
 		<div class="container">
 			<div class="row">
 		 		<div class="col-md-10 col-md-offset-1">
-		 		<div class="col-md-4">
+		 		<div class="col-md-3">
 					<div class="btn-group">
   						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Sort by <span class="caret"></span></button>
   						<ul class="dropdown-menu">
@@ -64,7 +63,7 @@ $mUsers=M_Users::getInstance();
 					</div>
 		 		</div>
 		 		<?php if (isset($_SESSION['login'])):?>
-		 			<div class="col-md-2 col-md-offset-5">
+		 			<div class="col-md-3 col-md-offset-6 text-right">
 						<a  class="btn" href="index.php?c=article&action=add">Create post</a>
 					</div>
 				<?php endif; ?>
@@ -76,7 +75,7 @@ $mUsers=M_Users::getInstance();
 			<div class="row">
 				<div class="col-md-10 col-md-offset-1">
 					<div class="panel panel-default">
-						<div class="panel-heading"></div>
+						<div class="panel-heading main "></div>
 						<div class="panel-body">
 						<?=$site_content?>
 						</div>

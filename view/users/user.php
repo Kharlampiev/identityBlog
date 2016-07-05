@@ -4,7 +4,7 @@
 </ul>
 <div class="row">
 	<div class="col-md-5 col-md-offset-4">
-		<div class="panel panel-default">
+		<div class="panel panel-success">
 			<div class="panel-heading">Profile: <?=$user['login']?></div>
 			<div class="panel-body">
 			<?php if(isset($_SESSION['login'])):?>

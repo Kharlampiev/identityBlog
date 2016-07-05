@@ -18,11 +18,11 @@
 						</div>
 					<?php endif;?>
 				<div class="panel-body">
-					<form class="form-horizontal" role="form" method="POST">
+					<form class="form-horizontal register" role="form" method="POST">
 						<div class="form-group">
 							<label class="col-md-4 control-label">Login</label>
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="login"  value="<?=$login?>"required autofocus>
+								<input type="text" class="form-control" name="login"  value="<?=$login?>" required autofocus>
 							</div>
 						</div>
 						<div class="form-group">
