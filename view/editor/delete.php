@@ -13,16 +13,21 @@ if(!$mUsers->can('Delete'))
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
-			<p class="text-danger text-center">Вы действительно хотите удалить эту статью <br><b>"<?=$title?>"</b>?
-			</p>
-			<form class="form-horizontal" role="form" method="POST">
-				<div class="form-group">
-					<div class="col-md-6 col-md-offset-5">
-						<button type="submit" name="yes" class="btn btn-primary">YES</button>
-						<button type="submit" name="no" class="btn btn-primary">NO</button>
+		 	<div class="panel panel-danger">
+		 		<div class="panel-heading"><?=$action_title?></div>
+		 			<div class="panel-body">	
+						<p  class="text-center"><b>"<?=$title?>"</b></p>
+						<p class="text-danger text-center"><strong>УДАЛИТЬ СТАТЬЮ?</strong></p>
+						<form class="form-horizontal" role="form" method="POST">
+							<div class="form-group">
+								<div class="col-md-6 col-md-offset-5">
+									<button type="submit" name="yes" class="btn btn-success">YES</button>
+									<button type="submit" name="no" class="btn btn-primary">NO</button>
+								</div>
+							</div>
+						</form>
 					</div>
-				</div>
-			</form>
+			</div>
 		</div>
 	</div>
 </div>

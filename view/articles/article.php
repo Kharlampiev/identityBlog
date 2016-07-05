@@ -1,12 +1,13 @@
 <ul class="breadcrumb">
 		<li><a href="index.php">Home</a></li>
 		<li><?=$action_title?></li>
+		<li><?=$title?></li>
 </ul>
 <div class="row">
-	<div class="col-md-3 col-md-offset-9">
-		<ul class="list-inline">
-			<li><a href="index.php?c=article&action=edit&id=<?=$id?>">редактировать</a></li>
-			<li><a href="index.php?c=article&action=delete&id=<?=$id?>" >удалить</a></li>
+	<div class="col-md-4 col-md-offset-8">
+		<ul class=" list-group list-inline">
+			<li><a class="list-group-item list-group-item-warning" href="index.php?c=article&action=edit&id=<?=$id?>">редактировать</a></li>
+			<li><a class="list-group-item list-group-item-danger" href="index.php?c=article&action=delete&id=<?=$id?>" >удалить</a></li>
 		</ul>
 	</div>
 </div>
@@ -16,7 +17,7 @@
 		<div class="panel ">
 			<div class="panel-heading">
 				<h3><?=$title?></h3>
-					<p class="text-muted">published:
+					<p class="text-muted info-create">created:
 						<?php $date=new DateTime($created_at);
 						print ($date->format('d/m/Y')) ?> by <?=$whoAdd?>
 					</p>
