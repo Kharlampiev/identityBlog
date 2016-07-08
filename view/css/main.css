@@ -52,10 +52,10 @@ body{
 .grid:last-child{
 	border-bottom:none;
 }
-.col-md-1 p{
+.col-md-2 p{
 	margin: 0;
 }
-.col-md-1{
+.col-md-2{
 	margin-top: 3%;
 }
 .panel-default>.panel-heading 
