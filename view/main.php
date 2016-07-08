@@ -7,7 +7,7 @@ $mUsers=M_Users::getInstance();
 	<meta charset="utf-8"> 
 	<title><?=$action_title?></title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="view/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="view/css/main.css">
 </head>
@@ -49,8 +49,8 @@ $mUsers=M_Users::getInstance();
 		
 		<div class="container">
 			<div class="row">
-		 		<div class="col-md-10 col-md-offset-1">
-		 		<div class="col-md-3">
+		 		<div class=" col-xs-10 col-md-10 col-md-offset-1">
+		 		<div class=" col-xs-3 col-md-3">
 					<div class="btn-group">
   						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Sort by <span class="caret"></span></button>
   						<ul class="dropdown-menu">
@@ -63,7 +63,7 @@ $mUsers=M_Users::getInstance();
 					</div>
 		 		</div>
 		 		<?php if (isset($_SESSION['login'])):?>
-		 			<div class="col-md-3 col-md-offset-6 text-right">
+		 			<div class=" col-xs-3 col-md-3 col-xs-offset-6 col-md-offset-6 text-right">
 						<a  class="btn" href="index.php?c=article&action=add">Create post</a>
 					</div>
 				<?php endif; ?>
@@ -73,7 +73,7 @@ $mUsers=M_Users::getInstance();
 		
 		<div class="container">
 			<div class="row">
-				<div class="col-md-10 col-md-offset-1">
+				<div class=" col-xs-12 col-md-10  col-md-offset-1">
 					<div class="panel panel-default">
 						<div class="panel-heading main "></div>
 						<div class="panel-body">

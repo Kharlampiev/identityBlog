@@ -6,13 +6,13 @@ if(!$mUsers->can('Add'))
 	die('У вас недостаточно прав для добавление статьи');
 }
 ?>
-<ul class="breadcrumb">
+<ul class="breadcrumb ">
 	<li><a href="index.php">Главная</a></li>
 	<li><?=$action_title?></li>
 </ul>
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-10 col-md-offset-1">
+		<div class=" col-md-12 col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
 				<div class="panel-heading"><?=$action_title?></div>
 				<div class="panel-body">

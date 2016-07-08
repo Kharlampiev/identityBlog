@@ -6,13 +6,13 @@ if(!$mUsers->can('Edit'))
 }
 ?>
 <ul  class="breadcrumb">
-	<li><a href="index.php">Главная</a></li>
-	<li><a href="index.php?c=article&action=get&id=<?=$id?>"><?=$title?></a></li>
-	<li><?=$action_title?></li>
+	<li ><a href="index.php">Главная</a></li>
+	<li ><a href="index.php?c=article&action=get&id=<?=$id?>"><?=$title?></a></li>
+	<li ><?=$action_title?></li>
 </ul>
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-10 col-md-offset-1">
+		<div class="col-xs-12 col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
 				<div class="panel-heading"><?=$action_title?></div>
 				<div class="panel-body">

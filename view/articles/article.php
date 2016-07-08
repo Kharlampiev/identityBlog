@@ -1,17 +1,19 @@
 <ul class="breadcrumb">
 		<li><a href="index.php">Home</a></li>
-		<li><?=$action_title?></li>
-		<li><?=$title?></li>
+		<li ><?=$action_title?></li>
+		<li ><?=$title?></li>
 </ul>
+
+<?php if (isset($_SESSION['login'])):?>
 <div class="row">
-	<div class="col-md-4 col-md-offset-8">
+	<div class="col-xs-12 col-md-4 col-md-offset-8">
 		<ul class=" list-group list-inline">
-			<li><a class="list-group-item list-group-item-warning" href="index.php?c=article&action=edit&id=<?=$id?>">редактировать</a></li>
-			<li><a class="list-group-item list-group-item-danger" href="index.php?c=article&action=delete&id=<?=$id?>" >удалить</a></li>
+			<li class="col-xs-8 text-center" ><a class="list-group-item list-group-item-warning" href="index.php?c=article&action=edit&id=<?=$id?>">редактировать</a></li>
+			<li class="col-xs-4 text-center"><a class="list-group-item list-group-item-danger" href="index.php?c=article&action=delete&id=<?=$id?>" >удалить</a></li>
 		</ul>
 	</div>
 </div>
-
+<?php endif; ?>
 <div class="row">
 	<div class="col-xs-12 col-md-12">
 		<div class="panel ">
@@ -23,7 +25,7 @@
 					</p>
 			</div>
 			<div class="panel-body">
-				<div class="col-xs-10 col-md-10  col-md-offset-1">
+				<div class="col-xs-12 col-md-10  col-md-offset-1">
 					<p><?=$content?></p>
 				</div>
 			</div>
@@ -32,12 +34,27 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-md-12">
+	<div class="col-xs-12 col-md-12">
 		<?=$comments;?>
 		<?=$form_comments;?>
 	</div>
 </div>
-	
+<!--<?php 
+$mUsers=M_Users::getInstance();
+if($mUsers->can('Add'))
+{
+print <<< END
+<div class="row">
+	<div class="col-md-4 col-md-offset-8">
+		<ul class=" list-group list-inline">
+			<li><a class="list-group-item list-group-item-warning" href="index.php?c=article&action=edit&id=<?=$id?>">редактировать</a></li>
+			<li><a class="list-group-item list-group-item-danger" href="index.php?c=article&action=delete&id=<?=$id?>" >удалить</a></li>
+		</ul>
+	</div>
+</div>
+END;
+}
+?>-->
 			
 	
 		
